@@ -18,9 +18,13 @@ masterKey = input ("Master key: ") # get master password 123
 #encrypt_key() 
 
 
-def load_key(): # load the previously generated key
-    return open('key.key', 'rb').read()
-key = load_key() + masterKey.bytes # load the key
+def load_key(): # load the key
+    file = open("key.key", "rb")
+    key = file.read()
+    file.close()
+    return key
+
+key = load_key() # load the key
 fer = Fernet(key) # create a Fernet object
 
 def view_passwords(): # decrypt and view passwords
